@@ -71,9 +71,9 @@ $dosen = $query_dosen->fetchAll();
                     </div>
                     
                     <div class="form-group">
-                        <label for="dosen">Dosen Wali:</label>
+                        <label for="dosen">Dosen Pembimbing:</label>
                         <select id="dosen" name="dosen" class="form-control" required>
-                            <option value="">-- Pilih Dosen Wali --</option>
+                            <option value="">-- Pilih Dosen Pembimbing --</option>
                             <?php foreach ($dosen as $d): ?>
                                 <option value="<?= $d['id_Dosen'] ?>">
                                     <?= htmlspecialchars($d['Nama_Dosen']) ?>

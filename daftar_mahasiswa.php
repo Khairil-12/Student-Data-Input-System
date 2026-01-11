@@ -29,7 +29,7 @@ $mahasiswa = $stmt->fetchAll();
     <div class="container">
         <div class="header">
             <h1>Daftar Mahasiswa</h1>
-            <p>Data Mahasiswa dengan Informasi Jurusan dan Dosen Wali</p>
+            <p>Data Mahasiswa dengan Informasi Jurusan dan Dosen Pembimbing</p>
         </div>
         
         <div class="content">
