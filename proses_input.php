@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$nim = $_POST['nim'] ?? '';
-$nama = $_POST['nama'] ?? '';
-$email = $_POST['email'] ?? '';
+$nim = trim($_POST['nim'] ?? '');
+$nama = trim($_POST['nama'] ?? '');
+$email = trim($_POST['email'] ?? '');
 $jurusan = $_POST['jurusan'] ?? '';
 $dosen = $_POST['dosen'] ?? '';
 $errors = [];
@@ -36,7 +36,7 @@ if (empty($dosen) || !is_numeric($dosen)) {
 }
 
 if (!empty($errors)) {
-    $error_msg = urlencode(implode(", ", $errors));
+    $error_msg = urlencode(implode(" | ", $errors));
     header("Location: form_mahasiswa.php?status=error&msg=$error_msg");
     exit;
 }
@@ -45,10 +45,12 @@ try {
     $stmt = $pdo->prepare("INSERT INTO Tb_Mahasiswa (NIM, Nama_Mhs, email, id_jurusan_fk, id_Dosenwali_fk) 
                             VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$nim, $nama, $email, $jurusan, $dosen]);
+    
     header('Location: form_mahasiswa.php?status=success');
     exit;
 } catch (PDOException $e) {
-    header('Location: form_mahasiswa.php?status=error&msg=' . urlencode($e->getMessage()));
+    $error_msg = urlencode("Error: " . $e->getMessage());
+    header("Location: form_mahasiswa.php?status=error&msg=$error_msg");
     exit;
 }
 ?>
