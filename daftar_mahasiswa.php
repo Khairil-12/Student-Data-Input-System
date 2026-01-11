@@ -37,7 +37,7 @@ $mahasiswa = $stmt->fetchAll();
                 <a href="form_mahasiswa.php" class="nav-btn">Input Mahasiswa Baru</a>
                 <a href="daftar_mahasiswa.php" class="nav-btn secondary">Lihat Daftar Mahasiswa</a>
             </div>
-            
+
             <?php if (empty($mahasiswa)): ?>
                 <div style="text-align: center; padding: 40px; color: #666;">
                     <h3>Belum ada data mahasiswa</h3>
